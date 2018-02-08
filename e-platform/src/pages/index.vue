@@ -4,21 +4,21 @@
       <div class="index-left-block">
         <h2>全部产品</h2>
         <template v-for="product in productList">
-          <h3 :key="product.id">{{ product.title }}</h3>
-          <ul :key="product.id">
-            <li v-for="item in product.list" :key="item.id">
+          <h3>{{ product.title }}</h3>
+          <ul>
+            <li v-for="item in product.list">
               <a :href="item.url">{{ item.name }}</a>
               <span v-if="item.hot" class="hot-tag">HOT</span>
             </li>
           </ul>
-          <div v-if="!product.last" class="hr" :key="product.id"></div>
+          <div v-if="!product.last" class="hr"></div>
         </template>
       </div>
 
       <div class="index-left-block lastest-news">
         <h2>最新消息</h2>
         <ul>
-          <li v-for="item in newsList" :key="item.id">
+          <li v-for="item in newsList">
             <a :href="item.url">{{ item.title }}</a>
           </li>
         </ul>
@@ -26,9 +26,9 @@
     </div>
 
     <div class="index-right">
-      <slide-show :slides="slides"></slide-show>
+      <slide-show :slides="slides" @onchange="doSomethingOnSlideChange"></slide-show>
       <div class="index-board-list">
-        <div :key="item.id" class="index-board-item"
+        <div class="index-board-item"
         v-for="(item, index) in boardList"
         :class="[{'line-last': index%2!==0}, 'index-board-'+ item.id]">
           <div class="index-board-item-inner">
@@ -59,7 +59,6 @@ export default {
   },
   data() {
     return {
-      invTime: 2000,
       slides: [
         {
           src: require('../assets/slideShow/pic1.jpg'),
@@ -180,6 +179,11 @@ export default {
       ],
     };
   },
+  methods: {
+    doSomethingOnSlideChange() {
+      // console.log('doSomethingOnSlideChange');
+    }
+  }
 };
 </script>
 

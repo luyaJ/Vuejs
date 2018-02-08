@@ -4,7 +4,12 @@
   <div class="slide-show" @mouseover="clearInv" @mouseout="runInv">
     <div class="slide-img">
       <a :href="slides[nowIndex].href">
-        <img :src="slides[nowIndex].src" alt="pic">
+        <transition name="slide-trans">
+          <img v-if="isShow" :src="slides[nowIndex].src" alt="pic">
+        </transition>
+        <transition name="slide-trans-old">
+          <img v-if="!isShow" :src="slides[nowIndex].src" alt="pic">
+        </transition>
       </a>
     </div>
     <h2>{{ slides[nowIndex].title }}</h2>
@@ -25,34 +30,39 @@ export default {
       type: Array,
       default: [],
     },
+    inv: {
+      type: Number,
+      default: 2000,
+    },
   },
   data() {
     return {
       nowIndex: 0,
-      inv: 2000
+      isShow: true,
     };
   },
   computed: {
-    preIndex () {
+    preIndex() {
       if (this.nowIndex === 0) {
         return this.slides.length - 1;
       }
-      else {
-        return this.nowIndex - 1;
-      }
+      return this.nowIndex - 1;
     },
-    nextIndex () {
+    nextIndex() {
       if (this.nowIndex === this.slides.length - 1) {
         return 0;
       }
-      else {
-        return this.nowIndex + 1;
-      }
+      return this.nowIndex + 1;
     },
   },
   methods: {
     goto(index) {
-      this.nowIndex = index;
+      this.isShow = false;
+      setTimeout(() => {
+        this.isShow = true;
+        this.nowIndex = index;
+        this.$emit('onchange', index);
+      }, 10);
     },
     runInv() {
       this.invId = setInterval(() => {

@@ -2,7 +2,9 @@
   <div>
     <div class="app-header">
       <div class="app-header-inner">
-        <img src="../assets/logo.png" alt="logo">
+        <router-link :to="{ path: '/' }">
+          <img src="../assets/logo.png" alt="logo">
+        </router-link>
         <div class="header-nav">
           <ul class="nav-list">
             <li @click="logClick">登录</li>

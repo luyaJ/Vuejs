@@ -87,20 +87,20 @@ export default {
           list: [
             {
               name: '数据统计',
-              url: 'http://starcraft.com',
+              url: '/detail/count',
             },
             {
               name: '数据预测',
-              url: 'http://warcraft.com',
+              url: '/detail/forecast',
             },
             {
               name: '流量分析',
-              url: 'http://overwatch.com',
+              url: '/detail/analysis',
               hot: true,
             },
             {
               name: '广告发布',
-              url: 'http://hearstone.com',
+              url: '/detail/publish',
             },
           ],
         },
@@ -161,20 +161,20 @@ export default {
       newsList: [
         {
           title: '数据统计',
-          url: 'http://starcraft.com',
+          url: '/detail/count',
         },
         {
           title: '数据预测',
-          url: 'http://warcraft.com',
+          url: '/detail/forecast',
         },
         {
           title: '流量分析',
-          url: 'http://overwatch.com',
+          url: '/detail/analysis',
           hot: true,
         },
         {
           title: '广告发布',
-          url: 'http://hearstone.com',
+          url: '/detail/publish',
         },
       ],
     };
@@ -183,7 +183,7 @@ export default {
     doSomethingOnSlideChange() {
       // console.log('doSomethingOnSlideChange');
     }
-  }
+  },
 };
 </script>
 

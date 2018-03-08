@@ -113,11 +113,9 @@
 
 <script>
 import VSelection from '../../components/selection';
-import Vcounter from '../../components/chooser';
 export default {
   components: {
     VSelection,
-    Vcounter,
   },
   data () {
     return {
